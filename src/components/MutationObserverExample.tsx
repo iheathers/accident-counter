@@ -3,6 +3,9 @@ import { useState, useEffect, useRef } from "react";
 const MutationObserverCounter = () => {
   const [count, setCount] = useState(0);
   const [draftCount, setDraftCount] = useState(0);
+
+  const [buttonText, setButtonText] = useState("Update Counter");
+
   const countRef = useRef(null);
   const buttonRef = useRef(null);
   const inputRef = useRef(null)
@@ -62,6 +65,9 @@ const MutationObserverCounter = () => {
           onSubmit={(e) => {
             e.preventDefault();
             setCount(draftCount);
+
+            setButtonText("Updated! ✅"); // Change button text to see MutationObserver in action
+
           }}
         >
           <input
@@ -73,7 +79,7 @@ const MutationObserverCounter = () => {
           />
           
           {/* Observed Element */}
-          <button ref={buttonRef} type="submit">Update MutationObserverCounter</button>
+          <button ref={buttonRef} type="submit">{buttonText}</button>
         </form>
       </div>
     </section>
